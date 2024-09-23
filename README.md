@@ -1,0 +1,1 @@
+# plugins-smntcs-custom-logo-link
