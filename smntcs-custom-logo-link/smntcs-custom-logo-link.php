@@ -6,7 +6,7 @@
  * Author:              Niels Lange <info@nielslange.de>
  * Author URI:          https://nielslange.de
  * Text Domain:         smntcs-custom-logo-link
- * Version:             2.2
+ * Version:             2.3
  * Requires at least:   3.4
  * Requires PHP:        5.6
  * License:             GPL v2 or later
@@ -56,8 +56,9 @@ function smntcs_custom_logo_link_register_customize( $wp_customize ) {
 	$wp_customize->add_setting(
 		'smntcs_custom_logo_link_target',
 		array(
-			'default' => false,
-			'type'    => 'option',
+			'default'           => '',
+			'type'              => 'option',
+			'sanitize_callback' => 'wp_validate_boolean',
 		)
 	);
 
@@ -133,4 +134,4 @@ function smntcs_custom_logo_link_enqueue() {
 			break;
 	}
 }
-add_action( 'wp_head', 'smntcs_custom_logo_link_enqueue' );
+add_action( 'wp_head', 'smntcs_custom_logo_link_enqueue', 10, 0 );
